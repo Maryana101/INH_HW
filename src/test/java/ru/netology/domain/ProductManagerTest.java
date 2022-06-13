@@ -51,7 +51,7 @@ public class ProductManagerTest {
   }
   
   @Test
-  public void shouldNotRemoveProductIdThenProductNotExists() {
+  public void shouldNotRemoveProductThenProductIdNotExists() {
     Product[] products = {book1, book2, telephone1};
     manager.setProducts(products);
     manager.removeProduct(4);
@@ -63,7 +63,7 @@ public class ProductManagerTest {
   }
   
   @Test
-  public void shouldSearchBooksByName() {
+  public void shouldFindBooksByName() {
     Product[] products = {book1, book2, book3};
     manager.setProducts(products);
     
@@ -74,7 +74,7 @@ public class ProductManagerTest {
   }
   
   @Test
-  public void shouldNotSearhProductsByName() {
+  public void shouldNotFindProductsByName() {
     Product[] products = {book1, book2, book3};
     manager.setProducts(products);
     
@@ -85,7 +85,7 @@ public class ProductManagerTest {
   }
   
   @Test
-  public void shouldSearhSmartphonesByName() {
+  public void shouldFindSmartphonesByName() {
     Product[] products = {telephone1, telephone2};
     manager.setProducts(products);
     
@@ -96,7 +96,7 @@ public class ProductManagerTest {
   }
   
   @Test
-  public void shouldSearchBooksByAuthor() {
+  public void shouldFindBooksByAuthor() {
     Product[] products = {book1, book3};
     manager.setProducts(products);
     
@@ -107,7 +107,7 @@ public class ProductManagerTest {
   }
   
   @Test
-  public void shouldSearchSmartphonesByManufacturer() {
+  public void shouldFindSmartphonesByManufacturer() {
     Product[] products = {telephone1, telephone2};
     manager.setProducts(products);
     
@@ -116,6 +116,4 @@ public class ProductManagerTest {
     
     assertArrayEquals(expected, actual);
   }
-  
-  
 }
