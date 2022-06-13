@@ -63,23 +63,56 @@ public class ProductManagerTest {
   }
   
   @Test
-  public void shouldSearchProductsByRightQuery() {
+  public void shouldFindBooksByName() {
     Product[] products = {book1, book2, book3};
     manager.setProducts(products);
     
-    Product[] actual = manager.searchBy("Кот");
+    Product[] actual = manager.matches("Кот");
     Product[] expected = {book1, book2};
     
     assertArrayEquals(expected, actual);
   }
   
   @Test
-  public void shouldNotSearhProductByWrongQuery() {
+  public void shouldNotFindProductsByName() {
     Product[] products = {book1, book2, book3};
     manager.setProducts(products);
     
-    Product[] actual = manager.searchBy("кот");
+    Product[] actual = manager.matches("кот");
     Product[] expected = {};
+    
+    assertArrayEquals(expected, actual);
+  }
+  
+  @Test
+  public void shouldFindSmartphonesByName() {
+    Product[] products = {telephone1, telephone2};
+    manager.setProducts(products);
+    
+    Product[] actual = manager.matches("Sony");
+    Product[] expected = {telephone2};
+    
+    assertArrayEquals(expected, actual);
+  }
+  
+  @Test
+  public void shouldFindBooksByAuthor() {
+    Product[] products = {book1, book3};
+    manager.setProducts(products);
+    
+    Product[] actual = manager.matches("Сьюз");
+    Product[] expected = {book1};
+    
+    assertArrayEquals(expected, actual);
+  }
+  
+  @Test
+  public void shouldFindSmartphonesByManufacturer() {
+    Product[] products = {telephone1, telephone2};
+    manager.setProducts(products);
+    
+    Product[] actual = manager.matches("Япония");
+    Product[] expected = {telephone2};
     
     assertArrayEquals(expected, actual);
   }
